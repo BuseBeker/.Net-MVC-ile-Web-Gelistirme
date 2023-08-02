@@ -1,0 +1,26 @@
+﻿@model EntityLayer.Concrete.Role
+
+@{
+    ViewBag.Title = "AddRole";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
+
+<h1>Yeni Role Ekleme Sayfası</h1>
+<br />
+@using (Html.BeginForm("AddRole", "AdminRole", FormMethod.Post))  //"AddRole" -> üzerinde çalışılan action ismi , "Role" -> üzerinde çalışılan controller ismi ,FormMethod.Post -> butona tıklayıp sayfaya bir post işlemi gönderildiği zaman
+{
+    <div class="form-group">
+        @Html.Label("Rol Adı")
+        @Html.TextBoxFor(x => x.RoleName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.RoleName)
+        <br /> <br />
+        @Html.Label("Açıklamayı Yazınız")
+        @Html.TextAreaFor(x => x.Description, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Description)
+        <br /> <br />
+        <button class="btn btn-info">Kaydet</button>
+    </div>
+}
+

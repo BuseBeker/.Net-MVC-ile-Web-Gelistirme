@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D31E83D9-8E53-4436-96E4-B622124B2EBA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DataAccessLayer</RootNamespace>
+    <AssemblyName>DataAccessLayer</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.5.0.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Text.RegularExpressions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.RegularExpressions.4.3.1\lib\net463\System.Text.RegularExpressions.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Abstract\IApplicationDal.cs" />
+    <Compile Include="Abstract\IRepository.cs" />
+    <Compile Include="Abstract\IRoleDal.cs" />
+    <Compile Include="Abstract\IUserDal.cs" />
+    <Compile Include="Abstract\IUserRoleDal.cs" />
+    <Compile Include="Concrete\Context.cs" />
+    <Compile Include="Concrete\Repositories\GenericRepository.cs" />
+    <Compile Include="Concrete\Repositories\RoleRepository.cs" />
+    <Compile Include="EntityFramework\EfApplicationDal.cs" />
+    <Compile Include="EntityFramework\EfRoleDal.cs" />
+    <Compile Include="EntityFramework\EfUserDal.cs" />
+    <Compile Include="EntityFramework\EfUserRoleDal.cs" />
+    <Compile Include="Migrations\202304090550288_mig_allupdate_090420230840.cs" />
+    <Compile Include="Migrations\202304090550288_mig_allupdate_090420230840.designer.cs">
+      <DependentUpon>202304090550288_mig_allupdate_090420230840.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304090600349_mig_allupdate_090420230900.cs" />
+    <Compile Include="Migrations\202304090600349_mig_allupdate_090420230900.designer.cs">
+      <DependentUpon>202304090600349_mig_allupdate_090420230900.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304090825181_mig_applicationtableupdate_090420231125.cs" />
+    <Compile Include="Migrations\202304090825181_mig_applicationtableupdate_090420231125.designer.cs">
+      <DependentUpon>202304090825181_mig_applicationtableupdate_090420231125.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304090921507_mig_dateupdate_090420231220.cs" />
+    <Compile Include="Migrations\202304090921507_mig_dateupdate_090420231220.designer.cs">
+      <DependentUpon>202304090921507_mig_dateupdate_090420231220.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304101140435_mig_tablolarastatusekle_100420231440.cs" />
+    <Compile Include="Migrations\202304101140435_mig_tablolarastatusekle_100420231440.designer.cs">
+      <DependentUpon>202304101140435_mig_tablolarastatusekle_100420231440.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304101229242_mig_UserRoletablosunaUserRoleIDekleme_100420231529.cs" />
+    <Compile Include="Migrations\202304101229242_mig_UserRoletablosunaUserRoleIDekleme_100420231529.designer.cs">
+      <DependentUpon>202304101229242_mig_UserRoletablosunaUserRoleIDekleme_100420231529.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304101321537_mig_UserRoletablosunaforeignkeyekleme_100420231621.cs" />
+    <Compile Include="Migrations\202304101321537_mig_UserRoletablosunaforeignkeyekleme_100420231621.designer.cs">
+      <DependentUpon>202304101321537_mig_UserRoletablosunaforeignkeyekleme_100420231621.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304110000443_mig_foreignkeygüncelleme_110420230300.cs" />
+    <Compile Include="Migrations\202304110000443_mig_foreignkeygüncelleme_110420230300.designer.cs">
+      <DependentUpon>202304110000443_mig_foreignkeygüncelleme_110420230300.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304110814272_mig_userıdforeignkeytanımlama_110420231113.cs" />
+    <Compile Include="Migrations\202304110814272_mig_userıdforeignkeytanımlama_110420231113.designer.cs">
+      <DependentUpon>202304110814272_mig_userıdforeignkeytanımlama_110420231113.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304111154395_mig_admin_table.cs" />
+    <Compile Include="Migrations\202304111154395_mig_admin_table.designer.cs">
+      <DependentUpon>202304111154395_mig_admin_table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304111314349_mig_drop_admin_table.cs" />
+    <Compile Include="Migrations\202304111314349_mig_drop_admin_table.designer.cs">
+      <DependentUpon>202304111314349_mig_drop_admin_table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304120600534_mig_dropstatus_120420230900.cs" />
+    <Compile Include="Migrations\202304120600534_mig_dropstatus_120420230900.designer.cs">
+      <DependentUpon>202304120600534_mig_dropstatus_120420230900.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304130913329_mig_projectstatusint_dropfile_130420231210.cs" />
+    <Compile Include="Migrations\202304130913329_mig_projectstatusint_dropfile_130420231210.designer.cs">
+      <DependentUpon>202304130913329_mig_projectstatusint_dropfile_130420231210.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304152155266_mig_commentRoletableinUsertable.cs" />
+    <Compile Include="Migrations\202304152155266_mig_commentRoletableinUsertable.designer.cs">
+      <DependentUpon>202304152155266_mig_commentRoletableinUsertable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304171100347_mig_uservalidation_170420231400.cs" />
+    <Compile Include="Migrations\202304171100347_mig_uservalidation_170420231400.designer.cs">
+      <DependentUpon>202304171100347_mig_uservalidation_170420231400.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304171156157_mig_uservalidationupdate_170420231500.cs" />
+    <Compile Include="Migrations\202304171156157_mig_uservalidationupdate_170420231500.designer.cs">
+      <DependentUpon>202304171156157_mig_uservalidationupdate_170420231500.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304171412414_mig_uservalidationupdate_170420231715.cs" />
+    <Compile Include="Migrations\202304171412414_mig_uservalidationupdate_170420231715.designer.cs">
+      <DependentUpon>202304171412414_mig_uservalidationupdate_170420231715.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304172347516_mig_dropvalidateinusertable_180420230250.cs" />
+    <Compile Include="Migrations\202304172347516_mig_dropvalidateinusertable_180420230250.designer.cs">
+      <DependentUpon>202304172347516_mig_dropvalidateinusertable_180420230250.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304172350305_mig_dusertableupdatestringlength_180420230252.cs" />
+    <Compile Include="Migrations\202304172350305_mig_dusertableupdatestringlength_180420230252.designer.cs">
+      <DependentUpon>202304172350305_mig_dusertableupdatestringlength_180420230252.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304180809541_mig_validation_180420231110.cs" />
+    <Compile Include="Migrations\202304180809541_mig_validation_180420231110.designer.cs">
+      <DependentUpon>202304180809541_mig_validation_180420231110.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304180902317_mig_validation_180420231200.cs" />
+    <Compile Include="Migrations\202304180902317_mig_validation_180420231200.designer.cs">
+      <DependentUpon>202304180902317_mig_validation_180420231200.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304191327157_mig_applicationcalidation_190420231625.cs" />
+    <Compile Include="Migrations\202304191327157_mig_applicationcalidation_190420231625.designer.cs">
+      <DependentUpon>202304191327157_mig_applicationcalidation_190420231625.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EntityLayer\EntityLayer.csproj">
+      <Project>{d27c4c47-da0b-42d9-b969-06a151f45fb1}</Project>
+      <Name>EntityLayer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202304090550288_mig_allupdate_090420230840.resx">
+      <DependentUpon>202304090550288_mig_allupdate_090420230840.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304090600349_mig_allupdate_090420230900.resx">
+      <DependentUpon>202304090600349_mig_allupdate_090420230900.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304090825181_mig_applicationtableupdate_090420231125.resx">
+      <DependentUpon>202304090825181_mig_applicationtableupdate_090420231125.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304090921507_mig_dateupdate_090420231220.resx">
+      <DependentUpon>202304090921507_mig_dateupdate_090420231220.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304101140435_mig_tablolarastatusekle_100420231440.resx">
+      <DependentUpon>202304101140435_mig_tablolarastatusekle_100420231440.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304101229242_mig_UserRoletablosunaUserRoleIDekleme_100420231529.resx">
+      <DependentUpon>202304101229242_mig_UserRoletablosunaUserRoleIDekleme_100420231529.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304101321537_mig_UserRoletablosunaforeignkeyekleme_100420231621.resx">
+      <DependentUpon>202304101321537_mig_UserRoletablosunaforeignkeyekleme_100420231621.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304110000443_mig_foreignkeygüncelleme_110420230300.resx">
+      <DependentUpon>202304110000443_mig_foreignkeygüncelleme_110420230300.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304110814272_mig_userıdforeignkeytanımlama_110420231113.resx">
+      <DependentUpon>202304110814272_mig_userıdforeignkeytanımlama_110420231113.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304111154395_mig_admin_table.resx">
+      <DependentUpon>202304111154395_mig_admin_table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304111314349_mig_drop_admin_table.resx">
+      <DependentUpon>202304111314349_mig_drop_admin_table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304120600534_mig_dropstatus_120420230900.resx">
+      <DependentUpon>202304120600534_mig_dropstatus_120420230900.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304130913329_mig_projectstatusint_dropfile_130420231210.resx">
+      <DependentUpon>202304130913329_mig_projectstatusint_dropfile_130420231210.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304152155266_mig_commentRoletableinUsertable.resx">
+      <DependentUpon>202304152155266_mig_commentRoletableinUsertable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304171100347_mig_uservalidation_170420231400.resx">
+      <DependentUpon>202304171100347_mig_uservalidation_170420231400.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304171156157_mig_uservalidationupdate_170420231500.resx">
+      <DependentUpon>202304171156157_mig_uservalidationupdate_170420231500.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304171412414_mig_uservalidationupdate_170420231715.resx">
+      <DependentUpon>202304171412414_mig_uservalidationupdate_170420231715.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304172347516_mig_dropvalidateinusertable_180420230250.resx">
+      <DependentUpon>202304172347516_mig_dropvalidateinusertable_180420230250.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304172350305_mig_dusertableupdatestringlength_180420230252.resx">
+      <DependentUpon>202304172350305_mig_dusertableupdatestringlength_180420230252.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304180809541_mig_validation_180420231110.resx">
+      <DependentUpon>202304180809541_mig_validation_180420231110.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304180902317_mig_validation_180420231200.resx">
+      <DependentUpon>202304180902317_mig_validation_180420231200.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304191327157_mig_applicationcalidation_190420231625.resx">
+      <DependentUpon>202304191327157_mig_applicationcalidation_190420231625.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+</Project>

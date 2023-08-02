@@ -1,0 +1,49 @@
+﻿@using EntityLayer.Concrete
+@model List<UserRole>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="container mx-1" style="width:auto;padding:2rem">
+    <h2>Kullanıcı Rol Listesi</h2>
+    <hr />
+    <br />
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">
+            <strong>Başarılı!</strong> @TempData["Success"]
+        </div>
+    }
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger">
+            <strong>Başarısız!</strong> @TempData["Error"]
+        </div>
+    }
+    <table class="table table-bordered table-hover table-striped" style="column-width:auto">
+        <tr>
+            <th>ID</th>
+            <th>Ad</th>
+            <th>Rol</th>
+            <th></th>
+
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.UserID</td>
+                <td>@item.User.Name @item.User.Surname</td>
+                <td>@item.Role.RoleName</td>
+                <td>
+
+                    <a href="/UserRole/EditUserRole/@item.UserRoleID" class="btn btn-warning btn-xs">Güncelle</a>
+
+                </td>
+            </tr>
+        }
+    </table>
+    <br />
+    <a href="/Application/AdminIndex" class="btn btn-primary">Anasayfaya Dön</a>
+</div>

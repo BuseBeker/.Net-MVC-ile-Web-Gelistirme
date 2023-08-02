@@ -1,0 +1,96 @@
+﻿@model EntityLayer.Concrete.UserRole
+
+
+@{
+    ViewBag.Title = "EditUserRole";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Kullanıcı Rolü Güncelleme Sayfası</h1>
+<hr />
+<br />
+@Using (Html.BeginForm("EditUserRole", "UserRole", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="container">
+        <div class="form-horizontal">
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            @Html.HiddenFor(x => x.UserID)
+            @Html.HiddenFor(x => x.RoleID)
+            @Html.HiddenFor(x => x.UserRoleID)
+
+            @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
+            @*<div class="form-group">
+                    @Html.Label("User Role ID", new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(x => x.UserRoleID, new { @class = "form-control", @disabled = "disabled" })
+                    </div>
+                </div>*@
+
+            @*<div class="form-group">
+                @Html.Label("User  ID", new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(x => x.UserID, new { @class = "form-control", @disabled = "disabled" })
+                </div>
+            </div>*@
+
+            <div class="form-group">
+                @Html.Label("Ad", new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(x => x.User.Name, new { @class = "form-control", @disabled = "disabled" })
+                    @*@Html.DropDownListFor(x => x.UserID, (List<SelectListItem>)ViewBag.vlu, new { @class = "form-control", @disabled = "disabled" })*@
+                    @Html.ValidationMessageFor(x => x.UserID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            @*viewbag ile değer(vlc) taşınıyor*@
+            <div class="form-group">
+                @Html.Label("Rol ", new { @class = "control-label col-md-2" })
+
+                <div class="col-md-10">
+                    @*@Html.DropDownListFor(x => x.RoleID, new SelectList(userViewModel.RoleList, "RoleID", "RoleName"), "Bir Rol Seç", new { @class = "form-control", @value = userViewModel.SelectedRoleId})*@
+                    @*@Html.DropDownList("RoleID",new SelectList(ViewBag.valuerole,"Value","Text"), new { @class="form-control"})*@
+                    @Html.DropDownListFor(x => x.Role.RoleID, (List<SelectListItem>)ViewBag.valuerole, new { @class = "form-control" })
+                    @*@Html.DropDownListFor(x => x.RoleID, (List<SelectListItem>)ViewBag.vlr, new { @class = "form-control" })*@
+
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <button class="btn btn-success" id="roleUpdate">Rol Güncelle</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+}
+
+@*@section scripts{
+    <script>
+        $("form").on("click", "#roleUpdate", function () {
+            /*var userId = $(this).closest("tr").find("td").eq(0).text().trim();*/
+
+            $.ajax({
+                url: "@Url.Action("EditUserRole")",
+                data: {
+                    UserRole: JSON.stringify({UserRole}),
+                    RoleID: $("#RoleID").val()
+                },
+                success: function (data) {
+                    alert(data);
+                    location.reload(true);
+                }
+            });
+        });
+    </script>
+}*@
+
+<br />
+<div>
+    <a href="/UserRole/Index" class="btn btn-primary">Listeye Dön</a>
+</div>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

@@ -1,0 +1,13 @@
+C:\Users\buseb\Desktop\UI\EntityLayer\bin\Debug\EntityLayer.dll.config
+C:\Users\buseb\Desktop\UI\EntityLayer\bin\Debug\EntityLayer.dll
+C:\Users\buseb\Desktop\UI\EntityLayer\bin\Debug\EntityLayer.pdb
+C:\Users\buseb\Desktop\UI\EntityLayer\bin\Debug\EntityFramework.dll
+C:\Users\buseb\Desktop\UI\EntityLayer\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\buseb\Desktop\UI\EntityLayer\bin\Debug\EntityFramework.xml
+C:\Users\buseb\Desktop\UI\EntityLayer\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\buseb\Desktop\UI\EntityLayer\obj\Debug\EntityLayer.csproj.AssemblyReference.cache
+C:\Users\buseb\Desktop\UI\EntityLayer\obj\Debug\EntityLayer.csproj.CoreCompileInputs.cache
+C:\Users\buseb\Desktop\UI\EntityLayer\obj\Debug\EntityLayer.csproj.CopyComplete
+C:\Users\buseb\Desktop\UI\EntityLayer\obj\Debug\EntityLayer.dll
+C:\Users\buseb\Desktop\UI\EntityLayer\obj\Debug\EntityLayer.pdb
+C:\Users\buseb\Desktop\UI\EntityLayer\bin\Debug\System.ComponentModel.Annotations.dll

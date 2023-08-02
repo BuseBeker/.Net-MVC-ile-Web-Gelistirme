@@ -1,0 +1,147 @@
+﻿
+@{
+    ViewBag.Title = "AdminOnayBekleyen";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<html>
+<body>
+    <div class="container mx-1" style="width:auto;padding:2rem">
+        <h2>Onay Bekleyen Başvuru Listesi</h2>
+        <hr />
+        <br />
+        @if (TempData["Success"] != null)
+        {
+            <div class="alert alert-success">
+                <strong>Başarılı!</strong> @TempData["Success"]
+            </div>
+        }
+        @if (TempData["Error"] != null)
+        {
+            <div class="alert alert-danger">
+                <strong>Başarısız!</strong> @TempData["Error"]
+            </div>
+        }
+        <link type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
+        <link type="text/css" href="https://cdn.datatables.net/buttons/2.0.1/css/buttons.dataTables.min.css" rel="stylesheet" />
+        <table class="table table-bordered table-hover table-striped" id="deneme">
+            <thead>
+                <tr>
+                    <th>Ad</th>
+                    <th>Soyad</th>
+                    <th>Proje Adı</th>
+                    <th>Açıklama</th>
+                    <th>Proje türü</th>
+                    <th>Durumu</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>@item.Surname</td>
+                        <td>@item.Project_name</td>
+                        <td>@item.Description</td>
+                        <td>@item.ProjectType</td>
+
+                        @*<td>
+                                @if (item.ProjectType == true)
+                                {
+                                    <p style="color:#333">Yüksek Lisans/Uzmanlık/Doktora Tezi</p>
+                                }
+                                else
+                                {
+                                    <p style="color:#333">Diğer</p>
+                                }
+                            </td>*@
+                        <td>
+                            @{
+                                if (item.ProjectStatus == 0)
+                                {
+                                    <label class="label label-warning">Onay Bekliyor</label>
+                                }
+                                else if (item.ProjectStatus == 1)
+                                {
+                                    <label class="label label-success">Onaylandı</label>
+
+                                }
+                                else
+                                {
+                                    <label class="label label-danger">Reddedildi</label>
+                                }
+                            }
+
+                            @*@{
+                                    if (item.ProjectStatus == 0)
+                                    {
+                                        <label style="color: #DAA520; ">Onay Bekliyor</label>
+                                    }
+                                    else if (item.ProjectStatus == 1)
+                                    {
+                                        <label style="color: #2d862d;">Onaylandı</label>
+
+                                    }
+                                    else
+                                    {
+                                        <label style="color: #8B0000;">Reddedildi</label>
+                                    }
+                                }*@
+
+
+                        </td>
+
+                        <td>
+                            @{
+                                if (item.ProjectStatus == 1 || item.ProjectStatus == 2)
+                                {
+                                    <a href="/Application/AdminDegerlendirme/@item.ApplicationID" class="btn disabled btn-warning btn-xs">Değerlendirme</a>
+                                }
+                                else
+                                {
+                                    <a href="/Application/AdminDegerlendirme/@item.ApplicationID" class="btn btn-warning btn-xs">Değerlendirme</a>
+                                }
+
+                            }
+                            <a href="/Application/AdminDetails/@item.ApplicationID" class="btn btn-primary btn-xs">Görüntüle</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js" defer></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js" defer></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.html5.min.js" defer></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.print.min.js" defer></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#deneme').DataTable({
+
+                    dom: 'Bfrtip',
+                    buttons: [
+                        {
+                            extend: 'pdf', className: 'btn btn-primary glyphicon glyphicon-file',
+                            split: [
+
+                                { extend: 'copy', className: 'btn btn-primary glyphicon glyphicon-duplicate' },
+                                { extend: 'csv', className: 'btn btn-primary glyphicon glyphicon-save-file' },
+                                { extend: 'excel', className: 'btn btn-primary glyphicon glyphicon-list-alt' },
+                                { extend: 'print', className: 'btn btn-primary glyphicon glyphicon-print' }
+
+                            ],
+                        }
+
+                    ]
+                });
+            });
+        </script>
+    </div>
+</body>
+</html>
+

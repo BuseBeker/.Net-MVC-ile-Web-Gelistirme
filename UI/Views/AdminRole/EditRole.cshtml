@@ -1,0 +1,27 @@
+﻿@model EntityLayer.Concrete.Role
+
+@{
+    ViewBag.Title = "EditRole";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Role Güncelleme Sayfası</h2>
+
+@using (Html.BeginForm("EditRole", "AdminRole", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.Label("Rol ID")
+        @Html.TextBoxFor(x => x.RoleID, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.RoleID)
+        <br /> 
+        @Html.Label("Rol Adı")
+        @Html.TextBoxFor(x => x.RoleName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.RoleName)
+        <br /> 
+        @Html.Label("Açıklamayı Yazınız")
+        @Html.TextAreaFor(x => x.Description, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Description)
+        <br /> 
+        <button class="btn btn-success">Güncelle</button>
+    </div>
+}

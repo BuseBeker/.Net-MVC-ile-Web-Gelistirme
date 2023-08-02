@@ -1,0 +1,34 @@
+﻿@using EntityLayer.Concrete
+@model List<Role>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Rol Adı</th>
+        <th>Açıklama</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th>@item.RoleID</th>
+            <td>@item.RoleName</td>
+            <td>@item.Description</td>
+            <td><a href="/AdminRole/DeleteRole/@item.RoleID" class="btn btn-danger">Sil</a></td> @*<a href="#"*@
+            <td><a href="/AdminRole/EditRole/@item.RoleID" class="btn btn-warning">Güncelle</a> @*<a href="#"*@
+                <a href="#" class="btn btn-primary">Başlıklar</a>
+            </td>
+        </tr> 
+    }
+</table>
+<br />
+<a href="/AdminRole/AddRole" class="btn btn-info">Yeni Role</a>
+

@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Proje Başvuru </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+
+    @*<nav class="navbar navbar-inverse">*@
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            @*<div class="navbar-header">
+                    <a class="navbar-brand" href="/Home/Index">WebSiteName</a>
+                    <a class="navbar-brand" href="/Home/Index">Anasayfa</a>
+                </div>*@
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/Home/HomePage">Anasayfa</a></li>
+                <li><a href="/Application/Index">Başvuru Listesi</a></li>@*<li class="active"><a href="/Application/Index">Anasayfa</a></li>*@
+                @*<li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Başvurumu Düzenle<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li><a href="/RoleAdmin">Roller</a></li>
+                <li><a href="/RoleAdmin/Create">Rolleri Düzenle</a></li>
+                <li><a href="/admin">Kullanıcılar</a></li>
+            </ul>
+        </li>*@
+                <li><a href="/Application/AddApplication">Başvuru Ekle</a></li>
+                @*<li><a href="#">Başvurumu Düzenle</a></li>*@
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li><a> @User.Identity.Name<span class="label label-info"></span></a></li>
+                    <li><a href="/Login/Logout"><span class="glyphicon glyphicon-log-in"></span> Çıkış Yap</a></li>
+                }
+                else
+                {
+                    <a href="/Login/Index" class="btn btn-success">Login</a>
+                    <a href="/Register/Index" class="btn btn-primary">Register</a>
+                }
+            </ul>
+        </div>
+    </nav>
+    @RenderBody()
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>

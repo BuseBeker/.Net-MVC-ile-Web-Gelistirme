@@ -1,0 +1,134 @@
+@model IEnumerable<UserIdentity.Models.Basvuru>
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    .container {
+        padding: 8px;
+    }
+</style>
+<html>
+<body>
+    <div class="container" style="width:auto">
+        <h2>Başvuru Listesi</h2>
+        <hr />
+        @if (TempData["Basvuru"] != null)
+        {
+            var basvuru = (UserIdentity.Models.Basvuru)TempData["Basvuru"];
+
+            <div class="alert alert-success" role="alert">
+                <strong><span class="glyphicon glyphicon-ok"></span> @basvuru.Ad @basvuru.Soyad </strong> Düzenlendi.
+            </div>
+        }
+        <link type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
+        <link type="text/css" href="https://cdn.datatables.net/buttons/2.0.1/css/buttons.dataTables.min.css" rel="stylesheet" />
+        <table class="table table-bordered table-hover table-striped" id="deneme">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Ad)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Soyad)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Mail)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Telefon)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Sehir)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ProjeAdi)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Aciklama)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ProjeninNiteligi)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Onay)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Ad)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Soyad)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Mail)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Telefon)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Sehir)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProjeAdi)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Aciklama)
+                        </td>
+                        <td>
+                            @if (item.ProjeninNiteligi == true)
+                            {
+                                <p style="color:#333">Yüksek Lisans/Uzmanlık/Doktora Tezi</p>
+                            }
+                            else
+                            {
+                                <p style="color:#333">Diğer</p>
+                            }
+                        </td>
+                        <td>
+                            @if (item.Onay)
+                            {
+                                <label class="label label-success">Onaylandı</label>
+                            }
+                            else
+                            {
+                                <label class="label label-danger">Onay Bekliyor</label>
+                            }
+                        </td>
+                        <td>
+                            @Html.ActionLink("Değerlendirme", "Edit", new { id = item.Id }, new { @class = "btn btn-warning btn-xs" })
+                            @Html.ActionLink("Görüntüle", "Details", new { id = item.Id }, new { @class = "btn btn-primary btn-xs" })
+                            @*@Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-xs" })*@
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.html5.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.print.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#deneme').DataTable({
+                    dom: 'Bfrtip',
+                    buttons: [
+                        'copy', 'csv', 'excel', 'pdf', 'print'
+                    ]
+                });
+            });
+        </script>
+    </div>
+</body>
+</html>
+
+

@@ -1,0 +1,81 @@
+﻿@model EntityLayer.Concrete.Application
+
+@{
+    ViewBag.Title = "AddApplication";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+
+<div class="container mx-1" style="width:auto;padding:2rem">
+    <h2>Başvuru Ekle</h2>
+    <hr />
+    <br />
+
+    @using (Html.BeginForm("AddApplication", "Application", FormMethod.Post))  //"AddRole" -> üzerinde çalışılan action ismi , "Role" -> üzerinde çalışılan controller ismi ,FormMethod.Post -> butona tıklayıp sayfaya bir post işlemi gönderildiği zaman
+    {
+        @Html.AntiForgeryToken()
+        <div class="container">
+            <div class="form-horizontal">
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="form-group">
+                    @Html.Label("Ad", new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.Name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.Label("Soyad", new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(x => x.Surname, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.Surname, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.Label("Proje Adı", new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(x => x.Project_name, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.Project_name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.Label("Açıklama", new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(x => x.Description, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.Description, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.Label("Projenin Türü", new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(x => x.ProjectType, (List<SelectListItem>)ViewBag.valueProjectType, new { @class = "form-control" })
+                        @*@Html.TextBoxFor(x => x.ProjectType, new { @class = "form-control" })*@
+                        @Html.ValidationMessageFor(x => x.ProjectType, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <button class="btn btn-primary">Kaydet</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    <br />
+    <div>
+        <a href="/Application/Index" class="btn btn-primary">Listeye Dön</a>
+    </div>
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</div>
+

@@ -1,0 +1,105 @@
+﻿@model EntityLayer.Concrete.Application
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+
+<div class="container" style="width:auto;padding:2rem">
+    <h2 class="container" style="margin-left:0px;">Başvuru Detayları</h2>
+    <hr />
+    <br />
+
+
+    <div class="container" style="padding-left: 20%;font-size:18px;">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayName("Ad")
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(x => x.Name)
+            </dd>
+            <br />
+
+            <dt>
+                @Html.DisplayName("Soyad")
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(x => x.Surname)
+            </dd>
+            <br />
+
+            <dt>
+                @Html.DisplayName("Proje Adı")
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(x => x.Project_name)
+            </dd>
+            <br />
+
+            <dt>
+                @Html.DisplayName("Açıklama")
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(x => x.Description)
+            </dd>
+            <br />
+
+            <dt>
+                @Html.DisplayName("Projenin türü")
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(x => x.ProjectType)
+            </dd>
+            <br />
+
+            <dt>
+                Durumu
+            </dt>
+
+            <dd>
+                @{
+                    if (Model.ProjectStatus == 0)
+                    {
+                        <label class="label label-warning">Onay Bekliyor</label>
+                    }
+                    else if (Model.ProjectStatus == 1)
+                    {
+                        <label class="label label-success">Onaylandı</label>
+
+                    }
+                    else
+                    {
+                        <label class="label label-danger">Reddedildi</label>
+                    }
+                }
+
+            </dd>
+        </dl>
+    </div>
+    <div class="col-md-offset-2 col-md-10" style="padding-left: 20%">
+        <p>
+            @{
+                if (Model.ProjectStatus == 1 || Model.ProjectStatus == 2)
+                {
+                    <a href="/Application/EditApplication/@Model.ApplicationID" class="btn disabled btn-warning">Düzenle</a>
+                }
+                else
+                {
+                    <a href="/Application/EditApplication/@Model.ApplicationID" class="btn btn-warning">Düzenle</a>
+                }
+
+            }
+            <a href="/Application/DeleteApplication/@Model.ApplicationID" class="btn btn-danger">Sil</a>
+        </p>
+    </div>
+    <div>
+        <a href="/Application/Index" class="btn btn-primary">Listeye Dön</a>
+    </div>
+</div>

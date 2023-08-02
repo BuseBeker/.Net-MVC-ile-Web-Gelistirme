@@ -1,0 +1,51 @@
+﻿@model EntityLayer.Concrete.Role
+
+@{
+    ViewBag.Title = "AddRole";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+}
+
+<div class="container mx-1" style="width:auto;padding:2rem">
+    <h2>Yeni Role Ekle</h2>
+    <hr />
+    <br />
+
+    @using (Html.BeginForm("AddRole", "Role", FormMethod.Post))  //"AddRole" -> üzerinde çalışılan action ismi , "Role" -> üzerinde çalışılan controller ismi ,FormMethod.Post -> butona tıklayıp sayfaya bir post işlemi gönderildiği zaman
+    {
+        <div class="container">
+            <div class="form-horizontal">
+
+                <div class="form-group">
+                    @Html.Label("Yeni Rol Adı", new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(x => x.RoleName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.RoleName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.Label("Açıklama Yazınız", new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(x => x.Description, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.Description, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <button class="btn btn-primary">Kaydet</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    <br />
+    <div>
+        <a href="/UserRole/Index" class="btn btn-primary">Kullanıcı Rol Listesine Dön</a>
+    </div>
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</div>

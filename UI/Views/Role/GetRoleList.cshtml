@@ -1,0 +1,36 @@
+﻿@using EntityLayer.Concrete
+@model List<Role>
+
+@{
+    ViewBag.Title = "GetRoleList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container mx-1" style="width:auto;padding:2rem">
+    <h2>Rol Listesi</h2>
+    <hr />
+    <br />
+    @if (TempData["Success"] != null)
+    {
+    <div class="alert alert-success">
+        <strong>Başarılı!</strong> @TempData["Success"]
+    </div>
+    }
+    <table class="table table-bordered table-hover table-striped" style="column-width:auto">
+        <tr>
+            <th>ID</th>
+            <th>Rol Adı</th>
+            <th>Açıklama</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.RoleID</td>
+                <td>@item.RoleName</td>
+                <td>@item.Description</td>
+            </tr>
+        }
+    </table>
+    <br />
+    <a href="/Application/AdminIndex" class="btn btn-primary">Anasayfaya Dön</a>
+</div>
